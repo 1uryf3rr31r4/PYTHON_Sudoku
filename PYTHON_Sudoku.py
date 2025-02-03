@@ -42,6 +42,15 @@ click_position_x = -1
 click_position_y = -1
 numero = 0
 
+def Tabuleiro_Hover(window, mouse_position_x, mouse_position_y):
+    quadrado= 66.7
+    ajuste= 50
+    if click_last_status == True and click == True:
+        x= (math.ceil((mouse_position_x - ajuste) / quadrado) -1)
+        y= (math.ceil((mouse_position_y - ajuste) / quadrado) -1)
+    if x>= 0 and x<= 8 and
+        x= ()
+
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -55,3 +64,5 @@ while True:
     mouse_position_y= mouse[1]
 
     click= pg.mouse.get_pressed()
+
+    Tabuleiro_Hover(window, mouse_position_x, mouse_position_y)
