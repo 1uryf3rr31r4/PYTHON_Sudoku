@@ -51,6 +51,17 @@ def Tabuleiro_Hover(window, mouse_position_x, mouse_position_y):
     if x>= 0 and x<= 8 and y>= 0 and y<=8:
         pg.draw.rect(window, azul_claro, (ajuste+ x* quadrado, ajuste+ y* quadrado, quadrado, quadrado))
 
+def Tabuleiro(window):
+    pg.draw.rect(window, preto, (50, 50, 600, 600), 6)
+    pg.draw.rect(window, preto, (50, 250, 600, 200), 6)
+    pg.draw.rect(window, preto, (250, 50, 200, 600), 6)
+    pg.draw.rect(window, preto, (50, 117, 600, 67), 2)
+    pg.draw.rect(window, preto, (50, 317, 600, 67), 2)
+    pg.draw.rect(window, preto, (50, 517, 600, 67), 2)
+    pg.draw.rect(window, preto, (117, 50, 67, 600), 2)
+    pg.draw.rect(window, preto, (317, 50, 67, 600), 2)
+    pg.draw.rect(window, preto, (517, 50, 67, 600), 2)
+
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -66,3 +77,4 @@ while True:
     click= pg.mouse.get_pressed()
 
     Tabuleiro_Hover(window, mouse_position_x, mouse_position_y)
+    Tabuleiro(window)
