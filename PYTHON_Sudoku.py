@@ -45,11 +45,11 @@ numero = 0
 def Tabuleiro_Hover(window, mouse_position_x, mouse_position_y):
     quadrado= 66.7
     ajuste= 50
-    if click_last_status == True and click == True:
-        x= (math.ceil((mouse_position_x - ajuste) / quadrado) -1)
-        y= (math.ceil((mouse_position_y - ajuste) / quadrado) -1)
-    if x>= 0 and x<= 8 and
-        x= ()
+    x= (math.ceil((mouse_position_x - ajuste) / quadrado) -1)
+    y= (math.ceil((mouse_position_y - ajuste) / quadrado) -1)
+    pg.draw.rect(window,branco, (0,0,1000,700))
+    if x>= 0 and x<= 8 and y>= 0 and y<=8:
+        pg.draw.rect(window, azul_claro, (ajuste+ x* quadrado, ajuste+ y* quadrado, quadrado, quadrado))
 
 while True:
     for event in pg.event.get():
