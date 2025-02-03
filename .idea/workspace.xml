@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="Tela do Jogo, Inicializando fonte e Escolha de tamanho e fonte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PYTHON_Sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/PYTHON_Sudoku.py" afterDir="false" />
     </list>
@@ -94,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738586452401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Tela do Jogo, Inicializando fonte e Escolha de tamanho e fonte">
+      <option name="closed" value="true" />
+      <created>1738587547375</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738587547375</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +118,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Inserção do Codigo Python" />
     <MESSAGE value="Commit Inicial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit Inicial" />
+    <MESSAGE value="Tela do Jogo, Inicializando fonte e Escolha de tamanho e fonte" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tela do Jogo, Inicializando fonte e Escolha de tamanho e fonte" />
   </component>
 </project>

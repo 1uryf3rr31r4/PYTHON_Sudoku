@@ -14,3 +14,44 @@ window = pg.display.set_mode((1000,700))
 pg.font.init()
 
 fonte = pg.font.SysFont("Courier New", 50, bold=True)
+
+tabuleiro_data = [['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n']]
+
+jogo_data = [['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+             ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n']]
+
+escondendo_numeros = True
+tabuleiro_preenchido = True
+click_last_status = False
+click_position_x = -1
+click_position_y = -1
+numero = 0
+
+while True:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            pg.quit()
+            quit()
+        if event.type == pg.KEYDOWN:
+            numero= pg.key.name(event.key)
+
+    mouse= pg.mouse.get_pos()
+    mouse_position_x= mouse[0]
+    mouse_position_y= mouse[1]
+
+    click= pg.mouse.get_pressed()
