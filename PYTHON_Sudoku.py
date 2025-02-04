@@ -66,6 +66,18 @@ def Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_st
         pg.draw.rect(window, azul, ((ajuste + x * quadrado, ajuste + y * quadrado, quadrado, quadrado)))
     return x,y
 
+def Gabarito_do_Tabuleiro(tabuleiro_data, tabuleiro_preenchido):
+    while tabuleiro_preenchido == True:
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 0,0)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 3,0)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 6,0)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 0,3)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 0,6)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 3,3)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 3,6)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 6,3)
+        tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 6,6)
+
 def Tabuleiro(window):
     pg.draw.rect(window, preto, (50, 50, 600, 600), 6)
     pg.draw.rect(window, preto, (50, 250, 600, 200), 6)
@@ -95,6 +107,7 @@ while True:
     click_position_x, click_position_y= Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click[0], click_position_x, click_position_y)
     Tabuleiro(window)
     Botao_Restart(window)
+    tabuleiro_data, tabuleiro_preenchido = Gabarito_do_Tabuleiro(tabuleiro_data, tabuleiro_preenchido)
 
     if click[0] == True:
         click_last_status = True
