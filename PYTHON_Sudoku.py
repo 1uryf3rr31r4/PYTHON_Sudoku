@@ -51,6 +51,19 @@ def Tabuleiro_Hover(window, mouse_position_x, mouse_position_y):
     if x>= 0 and x<= 8 and y>= 0 and y<=8:
         pg.draw.rect(window, azul_claro, (ajuste+ x* quadrado, ajuste+ y* quadrado, quadrado, quadrado))
 
+def Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click, x, y):
+    quadrado= 66.7
+    ajuste= 50
+    if click_last_status == True and click == True:
+        x= (math.ceil((mouse_position_x - ajuste) / quadrado) - 1)
+        y= (math.ceil((mouse_position_y - ajuste) / quadrado) - 1)
+    if x >= 0 and x <= 8 and y >= 0 and y<= 8:
+        pg.draw.rect(window, azul, ((ajuste + x * quadrado, ajuste + y * quadrado, quadrado, quadrado)))
+    return x,y
+
+
+
+
 def Tabuleiro(window):
     pg.draw.rect(window, preto, (50, 50, 600, 600), 6)
     pg.draw.rect(window, preto, (50, 250, 600, 200), 6)
@@ -77,4 +90,5 @@ while True:
     click= pg.mouse.get_pressed()
 
     Tabuleiro_Hover(window, mouse_position_x, mouse_position_y)
+    click_position_x, click_position_y= Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click[0], click_position_x, click_position_y)
     Tabuleiro(window)

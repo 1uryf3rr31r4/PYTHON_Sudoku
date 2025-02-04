@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="Correção da Função Tabuleiro_Hover">
+    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="Criação da Função Tabuleiro">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PYTHON_Sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/PYTHON_Sudoku.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738610755879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Criação da Função Tabuleiro">
+      <option name="closed" value="true" />
+      <created>1738611143974</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738611143974</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +154,7 @@
     <MESSAGE value="Inicializando Tela do Jogo" />
     <MESSAGE value="Criação da Função Tabuleiro_Hover" />
     <MESSAGE value="Correção da Função Tabuleiro_Hover" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correção da Função Tabuleiro_Hover" />
+    <MESSAGE value="Criação da Função Tabuleiro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criação da Função Tabuleiro" />
   </component>
 </project>
