@@ -51,6 +51,11 @@ def Tabuleiro_Hover(window, mouse_position_x, mouse_position_y):
     if x>= 0 and x<= 8 and y>= 0 and y<=8:
         pg.draw.rect(window, azul_claro, (ajuste+ x* quadrado, ajuste+ y* quadrado, quadrado, quadrado))
 
+def Botao_Restart(window):
+    pg.draw.rect(window, verde, (700, 50, 250, 100))
+    palavra_f= fonte.render('Restart', True, preto)
+    window.blit(palavra_f, (725,75))
+
 def Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click, x, y):
     quadrado= 66.7
     ajuste= 50
@@ -60,9 +65,6 @@ def Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_st
     if x >= 0 and x <= 8 and y >= 0 and y<= 8:
         pg.draw.rect(window, azul, ((ajuste + x * quadrado, ajuste + y * quadrado, quadrado, quadrado)))
     return x,y
-
-
-
 
 def Tabuleiro(window):
     pg.draw.rect(window, preto, (50, 50, 600, 600), 6)
@@ -92,3 +94,11 @@ while True:
     Tabuleiro_Hover(window, mouse_position_x, mouse_position_y)
     click_position_x, click_position_y= Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click[0], click_position_x, click_position_y)
     Tabuleiro(window)
+    Botao_Restart(window)
+
+    if click[0] == True:
+        click_last_status = True
+    else:
+        click_last_status = False
+
+    pg.display.update()
