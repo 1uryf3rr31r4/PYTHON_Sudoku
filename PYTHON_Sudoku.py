@@ -1,3 +1,5 @@
+from itertools import count
+
 import pygame as pg
 import random
 import math
@@ -77,6 +79,120 @@ def Gabarito_do_Tabuleiro(tabuleiro_data, tabuleiro_preenchido):
         tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 3,6)
         tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 6,3)
         tabuleiro_data = Preenchendo_Quadrantes(tabuleiro_data, 6,6)
+        for nn in range(9):
+            for n in range(9):
+                if tabuleiro_data[nn][n] == 'n':
+                    tabuleiro_data = Reiniciando_Tabuleiro_Data(tabuleiro_data)
+        count = 0
+        for nn in range(9):
+            for n in range(9):
+                if tabuleiro_data[nn][n] != 'n':
+                    count += 1
+        if count == 81:
+            tabuleiro_preenchido = False
+    return tabuleiro_data, tabuleiro_preenchido
+
+def Preenchendo_Quadrantes(tabuleiro_data, x2, y2):
+    quadrante_preenchido = True
+    loop = 0
+    try_count = 0
+    numero = 1
+    while quadrante_preenchido == True:
+        x = random.randint(x2, x2 + 2)
+        y = random.randint(y2, y2 + 2)
+        linha_sorteada = Linha_Escolhida(tabuleiro_data, y)
+        coluna_sorteada = Coluna_Escolhida(tabuleiro_data, x)
+        quadrante = Quadrante_Selecionado(tabuleiro_data,x,y)
+        if tabuleiro_data[y][x] == 'n' and numero not in linha_sorteada and numero not in coluna_sorteada and numero not in quadrante:
+            tabuleiro_data[y][x] = numero
+            numero += 1
+        loop += 1
+        if loop == 50:
+            tabuleiro_data[y2][x2] = 'n'
+            tabuleiro_data[y2][x2+1] = 'n'
+            tabuleiro_data[y2][x2+2] = 'n'
+            tabuleiro_data[y2+1][x2] = 'n'
+            tabuleiro_data[y2+1][x2+1] = 'n'
+            tabuleiro_data[y2+1][x2+2] = 'n'
+            tabuleiro_data[y2+2][x2] = 'n'
+            tabuleiro_data[y2+2][x2+1] = 'n'
+            tabuleiro_data[y2+2][x2+2] = 'n'
+            loop = 0
+            numero = -1
+            try_count +=1
+        if try_count == 10:
+            break
+        count = 0
+        for n in range(9):
+            if quadrante[n] != 'n':
+                count += 1
+        if count == 9:
+            quadrante_preenchido = False
+    return tabuleiro_data
+
+def Reiniciando_Tabuleiro_Data(tabuleiro_data):
+    tabuleiro_data = [['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n'],
+                      ['n','n','n','n','n','n','n','n','n']]
+
+    return tabuleiro_data
+
+def Linha_Escolhida(tabuleiro_data, y):
+    linha_sorteada = tabuleiro_data[y]
+    return linha_sorteada
+
+def Coluna_Escolhida(tabuleiro_data, x):
+    coluna_sorteada = []
+    for n in range(8):
+        coluna_sorteada.append(tabuleiro_data[n][x])
+    return coluna_sorteada
+
+def Quadrante_Selecionado(tabuleiro_data, x,y):
+    quadrante = []
+
+    if x >= 0 and x <= 2 and y >= 0 and y <= 2:
+        quadrante.extend([tabuleiro_data[0][0], tabuleiro_data[0][1], tabuleiro_data[0][2],
+                          tabuleiro_data[1][0], tabuleiro_data[1][1], tabuleiro_data[1][2],
+                          tabuleiro_data[2][0], tabuleiro_data[2][1], tabuleiro_data[2][2]])
+    elif x >= 3 and x <= 5 and y >= 0 and y <= 2:
+        quadrante.extend([tabuleiro_data[0][3], tabuleiro_data[0][4], tabuleiro_data[0][5],
+                          tabuleiro_data[1][3], tabuleiro_data[1][4], tabuleiro_data[1][5],
+                          tabuleiro_data[2][3], tabuleiro_data[2][4], tabuleiro_data[2][5]])
+    elif x >= 6 and x <= 8 and y >= 0 and y <= 2:
+        quadrante.extend([tabuleiro_data[0][6], tabuleiro_data[0][7], tabuleiro_data[0][8],
+                          tabuleiro_data[1][6], tabuleiro_data[1][7], tabuleiro_data[1][8],
+                          tabuleiro_data[2][6], tabuleiro_data[2][7], tabuleiro_data[2][8]])
+    elif x >= 0 and x <= 2 and y >= 3 and y <= 5:
+        quadrante.extend([tabuleiro_data[3][0], tabuleiro_data[3][1], tabuleiro_data[3][2],
+                          tabuleiro_data[4][0], tabuleiro_data[4][1], tabuleiro_data[4][2],
+                          tabuleiro_data[5][0], tabuleiro_data[5][1], tabuleiro_data[5][2]])
+    elif x >= 3 and x <= 5 and y >= 3 and y <= 5:
+        quadrante.extend([tabuleiro_data[3][3], tabuleiro_data[3][4], tabuleiro_data[3][5],
+                          tabuleiro_data[4][3], tabuleiro_data[4][4], tabuleiro_data[4][5],
+                          tabuleiro_data[5][3], tabuleiro_data[5][4], tabuleiro_data[5][5]])
+    elif x >= 6 and x <= 8 and y >= 3 and y <= 5:
+        quadrante.extend([tabuleiro_data[3][6], tabuleiro_data[3][7], tabuleiro_data[3][8],
+                          tabuleiro_data[4][6], tabuleiro_data[4][7], tabuleiro_data[4][8],
+                          tabuleiro_data[5][6], tabuleiro_data[5][7], tabuleiro_data[5][8]])
+    elif x >= 0 and x <= 2 and y >= 6 and y <= 8:
+        quadrante.extend([tabuleiro_data[6][0], tabuleiro_data[6][1], tabuleiro_data[6][2],
+                          tabuleiro_data[7][0], tabuleiro_data[7][1], tabuleiro_data[7][2],
+                          tabuleiro_data[8][0], tabuleiro_data[8][1], tabuleiro_data[8][2]])
+    elif x >= 3 and x <= 5 and y >= 6 and y <= 8:
+        quadrante.extend([tabuleiro_data[6][3], tabuleiro_data[6][4], tabuleiro_data[6][5],
+                          tabuleiro_data[7][3], tabuleiro_data[7][4], tabuleiro_data[7][5],
+                          tabuleiro_data[8][3], tabuleiro_data[8][4], tabuleiro_data[8][5]])
+    elif x >= 6 and x <= 8 and y >= 6 and y <= 8:
+        quadrante.extend([tabuleiro_data[6][6], tabuleiro_data[6][7], tabuleiro_data[6][8],
+                          tabuleiro_data[7][6], tabuleiro_data[7][7], tabuleiro_data[7][8],
+                          tabuleiro_data[8][6], tabuleiro_data[8][7], tabuleiro_data[8][8]])
+    return quadrante
 
 def Tabuleiro(window):
     pg.draw.rect(window, preto, (50, 50, 600, 600), 6)
