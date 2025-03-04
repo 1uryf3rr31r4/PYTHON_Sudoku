@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="Criação da Função Gabarito_do_Tabuleiro">
+    <list default="true" id="977a4c58-36cf-4fb1-b271-9cea0c1f6889" name="Changes" comment="Criação da Função Reiniciando_Tabuleiro_Data, Linha_Escolhida, Coluna_Escolhida e Quadrante_Selecionado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PYTHON_Sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/PYTHON_Sudoku.py" afterDir="false" />
     </list>
@@ -157,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738700465298</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Criação da Função Reiniciando_Tabuleiro_Data, Linha_Escolhida, Coluna_Escolhida e Quadrante_Selecionado">
+      <option name="closed" value="true" />
+      <created>1738769312838</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738769312838</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +190,7 @@
     <MESSAGE value="Criação da Função Celula_Selecionada" />
     <MESSAGE value="Criação da Função Botao_Restart" />
     <MESSAGE value="Criação da Função Gabarito_do_Tabuleiro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Criação da Função Gabarito_do_Tabuleiro" />
+    <MESSAGE value="Criação da Função Reiniciando_Tabuleiro_Data, Linha_Escolhida, Coluna_Escolhida e Quadrante_Selecionado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Criação da Função Reiniciando_Tabuleiro_Data, Linha_Escolhida, Coluna_Escolhida e Quadrante_Selecionado" />
   </component>
 </project>

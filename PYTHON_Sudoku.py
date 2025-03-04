@@ -205,26 +205,118 @@ def Tabuleiro(window):
     pg.draw.rect(window, preto, (317, 50, 67, 600), 2)
     pg.draw.rect(window, preto, (517, 50, 67, 600), 2)
 
+def Escondendo_Numeros(tabuleiro_data, jogo_data, escondendo_numeros):
+    if escondendo_numeros == True:
+        for n in range(40):
+            sorteando_numero = True
+            while sorteando_numero == True:
+                x = random.randint(0,8)
+                y = random.randint(0,8)
+
+                if jogo_data[y][x] == 'n':
+                    jogo_data[y][x] = tabuleiro_data[y][x]
+                    sorteando_numero = False
+
+        escondendo_numeros = False
+
+    return jogo_data, escondendo_numeros
+
+def Escrevendo_Numeros(window, jogo_data):
+    quadrado = 66.7
+    ajuste = 67
+
+    for nn in range(9):
+        for n in range(9):
+            if jogo_data[nn][n] != 'n':
+                palavra = fonte.render(str(jogo_data[nn][n]), True, preto)
+                window.blit(palavra, (ajuste + n * quadrado, ajuste - 5 + nn * quadrado))
+                if jogo_data[nn][n] == 'X':
+                    palavra = fonte.render(str(jogo_data[nn][n]), True, vermelho)
+                    window.blit(palavra, (ajuste + n * quadrado, ajuste - 5 + nn * quadrado))
+
+def Digitando_Numero(numero):
+    try:
+        numero = int(numero[1])
+    except:
+        numero = int(numero)
+
+    return numero
+
+def Checando_Numero_Digitado(window, tabuleiro_data, jogo_data, click_position_x, click_position_y, numero):
+    x = click_position_x
+    y = click_position_y
+
+    if x >= 0 and x <= 8 and y >= 0 and y <= 8 and tabuleiro_data[y][x] == numero and jogo_data[y][x] == 'n' and numero != 0:
+        jogo_data[y][x] = numero
+        numero = 0
+
+    if x >= 0 and x <= 8 and y >= 0 and y <= 8 and tabuleiro_data[y][x] == numero and jogo_data[y][x] == numero and numero != 0:
+        pass
+
+    if x >= 0 and x <= 8 and y >= 0 and y <= 8 and tabuleiro_data[y][x] != numero and jogo_data[y][x] == 'n' and numero != 0:
+        jogo_data[y][x] = 'X'
+        numero = 0
+
+    if x >= 0 and x <= 8 and y >= 0 and y <= 8 and tabuleiro_data[y][x] == numero and jogo_data[y][x] == 'X' and numero != 0:
+        jogo_data[y][x] = numero
+        numero = 0
+
+    return jogo_data, numero
+
+def Click_Botao_Restart(mouse_position_x, mouse_position_y, click_last_status, click, tabuleiro_preenchido, escondendo_numeros, tabuleiro_data, jogo_data):
+    x = click_position_x
+    y = click_position_y
+
+    if x >= 700 and x <= 950 and y >= 50 and y <= 150 and click_last_status == False and click == True:
+        tabuleiro_preenchido = True
+        escondendo_numeros = True
+        tabuleiro_data = Reiniciando_Tabuleiro_Data(tabuleiro_data)
+        jogo_data = Reiniciando_Tabuleiro_Data(jogo_data)
+
+    return tabuleiro_preenchido, escondendo_numeros, tabuleiro_data, jogo_data
+
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
             quit()
         if event.type == pg.KEYDOWN:
-            numero= pg.key.name(event.key)
+            numero = pg.key.name(event.key)
 
-    mouse= pg.mouse.get_pos()
-    mouse_position_x= mouse[0]
-    mouse_position_y= mouse[1]
+    mouse = pg.mouse.get_pos()
+    mouse_position_x = mouse[0]
+    mouse_position_y = mouse[1]
 
-    click= pg.mouse.get_pressed()
+    click = pg.mouse.get_pressed()
 
     Tabuleiro_Hover(window, mouse_position_x, mouse_position_y)
-    click_position_x, click_position_y= Celula_Selecionada(window, mouse_position_x, mouse_position_y, click_last_status, click[0], click_position_x, click_position_y)
+    click_position_x, click_position_y= Celula_Selecionada(window,
+                                                           mouse_position_x,
+                                                           mouse_position_y,
+                                                           click_last_status,
+                                                           click[0],
+                                                           click_position_x,
+                                                           click_position_y)
     Tabuleiro(window)
     Botao_Restart(window)
     tabuleiro_data, tabuleiro_preenchido = Gabarito_do_Tabuleiro(tabuleiro_data, tabuleiro_preenchido)
-
+    jogo_data, escondendo_numeros = Escondendo_Numeros(tabuleiro_data, jogo_data, escondendo_numeros)
+    Escrevendo_Numeros(window, jogo_data)
+    numero = Digitando_Numero(numero)
+    jogo_data, numero = Checando_Numero_Digitado(window,
+                                                 tabuleiro_data,
+                                                 jogo_data,
+                                                 click_position_x,
+                                                 click_position_y,
+                                                 numero)
+    tabuleiro_preenchido, escondendo_numeros, tabuleiro_data, jogo_data = Click_Botao_Restart(mouse_position_x,
+                                                                                              mouse_position_y,
+                                                                                              click_last_status,
+                                                                                              click[0],
+                                                                                              tabuleiro_preenchido,
+                                                                                              escondendo_numeros,
+                                                                                              tabuleiro_data,
+                                                                                              jogo_data)
     if click[0] == True:
         click_last_status = True
     else:
